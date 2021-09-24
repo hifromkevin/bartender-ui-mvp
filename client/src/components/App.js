@@ -14,6 +14,7 @@ const App = () => {
     bartenderState,
     setBartenderState
   ] = useState({
+    availableCocktails: [],
     channels: [
       {
         id: 0,
@@ -97,6 +98,57 @@ const App = () => {
     );
   };
 
+  // adding newestMixer to combat that this call doesn't work async
+  // so this is to be able to show the newly selected item
+  // Sorta hacky, but works for now
+  const createListOfCocktails = (newestMixer) => {
+    let { availableCocktails } = bartenderState;
+    const { selectedMixers } = bartenderState;
+    /* 
+    Selected mixers: [
+      {
+        mixerName: 'a',
+        gpioPin: 1,
+        channelNum: 1
+      }
+    ]
+    */
+    const sendTrueIfMixerIsNotIncluded = (ingredient) => {
+      for (let i = 0; i < selectedMixers.length; i++) {
+        if (selectedMixers[i].mixerName === ingredient) return false;
+      }
+      return true;
+    }
+
+    // Cycle through all of the available cocktails
+    cocktails.forEach(cocktail => {
+      const { cocktailName, ingredients } = cocktail;
+      let allIngredientsAvailable = true;
+
+      // Loop ingredients
+      for (let i = 0; i < ingredients.length; i++) {
+        const { ingredientName } = ingredients[i];
+
+        // If an ingredient is NOT on the list of mixers, end cycle and go to the next cocktail. 
+        if (sendTrueIfMixerIsNotIncluded(ingredientName) && ingredientName !== newestMixer) {
+          allIngredientsAvailable = false;
+          break;
+        }
+      }
+
+      if (allIngredientsAvailable) availableCocktails = [...availableCocktails, cocktail];
+
+      //If all ingredients are cycled through, and they are all on the list of available mixers, 
+      // add it to a list of available cocktails that can be chosen by the user. 
+      setBartenderState(
+        state => ({
+          ...state,
+          availableCocktails
+        })
+      );
+    });
+  };
+
   const hideModal = () => setBartenderState(
     state => ({
       ...state,
@@ -136,6 +188,7 @@ const App = () => {
 
     // Modal closes
     hideModal();
+    createListOfCocktails(CommonUtils.camelizeWords(mixerName));
   };
 
   const {
@@ -168,7 +221,6 @@ const App = () => {
             key={index}
             cocktailName={cocktail.cocktailName}
             listOfIngredients={cocktail.ingredients}
-            makeDrinkAPI={apiCall}
           />
         )
         )}
