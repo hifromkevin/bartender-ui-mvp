@@ -13,11 +13,10 @@ const camelizeWords = (phrase) => {
 }
 
 // This calculates for 50 mL/second, then turns it to milliseconds
-const pourTime = (mL) => (mL / 50) * 1000;
+
 
 const CommonUtils = Object.freeze({
-  camelizeWords,
-  pourTime
+  camelizeWords
 });
 
 

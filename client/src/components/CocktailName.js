@@ -1,12 +1,18 @@
-import "babel-polyfill";
-import React from "react";
+import 'babel-polyfill';
+import React from 'react';
 
 const CocktailName = (props) => {
   const {
-    cocktailName
+    cocktailName,
+    listOfIngredients,
+    makeDrinkAPI
   } = props;
 
-  return (<p>{cocktailName}</p>);
+  return (
+    <p onClick={
+      () => makeDrinkAPI(listOfIngredients)
+    }>{cocktailName}{console.log('himom!', listOfIngredients)}</p>
+  );
 };
 
 export default CocktailName;

@@ -70,6 +70,29 @@ const App = () => {
     shouldDisplayModal: false
   });
 
+  const apiCall = async (pins) => {
+    // turns array of pins (EX: ['vodka', 'cranberry']), 
+    // and places it within an object with a key of 'pins'
+    const getPins = { pins }
+
+    await fetch('/makeDrink', {
+      method: 'POST',
+      body: JSON.stringify(getPins),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data Response: ', data)
+        setBartenderState(state => ({
+          ...state,
+          dataResponse: data.timeframe
+        }))
+      })
+      .catch(err => console.log('uh oh', err))
+  }
+
   const clickChannel = idNum => {
     let {
       channels,
@@ -221,6 +244,7 @@ const App = () => {
             key={index}
             cocktailName={cocktail.cocktailName}
             listOfIngredients={cocktail.ingredients}
+            makeDrinkAPI={apiCall}
           />
         )
         )}
