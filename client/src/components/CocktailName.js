@@ -11,7 +11,7 @@ const CocktailName = (props) => {
   return (
     <p onClick={
       () => makeDrinkAPI(listOfIngredients)
-    }>{cocktailName}{console.log('himom!', listOfIngredients)}</p>
+    }>{cocktailName}</p>
   );
 };
 
