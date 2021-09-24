@@ -6,7 +6,8 @@ const Channel = (props) => {
     channel: {
       id,
       selectedMixer
-    }
+    },
+    clickChannel
   } = props;
 
   const mixerName = selectedMixer
@@ -18,6 +19,7 @@ const Channel = (props) => {
       <p>Channel {id + 1}</p>
       <div
         className='channel__inner-box'
+        onClick={() => clickChannel(id)}
       >
         {mixerName}
       </div>
