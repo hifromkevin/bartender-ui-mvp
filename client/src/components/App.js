@@ -128,15 +128,7 @@ const App = () => {
   const createListOfCocktails = (newestMixer) => {
     let { availableCocktails } = bartenderState;
     const { selectedMixers } = bartenderState;
-    /* 
-    Selected mixers: [
-      {
-        mixerName: 'a',
-        gpioPin: 1,
-        channelNum: 1
-      }
-    ]
-    */
+
     const sendTrueIfMixerIsNotIncluded = (ingredient) => {
       for (let i = 0; i < selectedMixers.length; i++) {
         if (selectedMixers[i].mixerName === ingredient) return false;
@@ -160,14 +152,14 @@ const App = () => {
         }
       }
 
-      for (let j = 0; j < availableCocktails.length; j++) {
-        if (
-          CommonUtils.camelizeWords(availableCocktails[j].cocktailName) === CommonUtils.camelizeWords(cocktail.cocktailName)
-        ) {
-          allIngredientsAvailable = false;
-          break;
-        }
-      }
+      // for (let j = 0; j < availableCocktails.length; j++) {
+      //   if (
+      //     CommonUtils.camelizeWords(availableCocktails[j].cocktailName) === CommonUtils.camelizeWords(cocktail.cocktailName)
+      //   ) {
+      //     allIngredientsAvailable = false;
+      //     break;
+      //   }
+      // }
 
       if (allIngredientsAvailable) availableCocktails = [...availableCocktails, cocktail];
 
