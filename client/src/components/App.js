@@ -126,8 +126,8 @@ const App = () => {
   // so this is to be able to show the newly selected item
   // Sorta hacky, but works for now
   const createListOfCocktails = (newestMixer) => {
-    let { availableCocktails } = bartenderState;
     const { selectedMixers } = bartenderState;
+    let listOfCocktails = [];
 
     const sendTrueIfMixerIsNotIncluded = (ingredient) => {
       for (let i = 0; i < selectedMixers.length; i++) {
@@ -152,23 +152,14 @@ const App = () => {
         }
       }
 
-      // for (let j = 0; j < availableCocktails.length; j++) {
-      //   if (
-      //     CommonUtils.camelizeWords(availableCocktails[j].cocktailName) === CommonUtils.camelizeWords(cocktail.cocktailName)
-      //   ) {
-      //     allIngredientsAvailable = false;
-      //     break;
-      //   }
-      // }
-
-      if (allIngredientsAvailable) availableCocktails = [...availableCocktails, cocktail];
+      if (allIngredientsAvailable) listOfCocktails = [...listOfCocktails, cocktail];
 
       //If all ingredients are cycled through, and they are all on the list of available mixers, 
       // add it to a list of available cocktails that can be chosen by the user. 
       setBartenderState(
         state => ({
           ...state,
-          availableCocktails
+          availableCocktails: listOfCocktails
         })
       );
     });
