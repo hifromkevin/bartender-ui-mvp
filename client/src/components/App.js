@@ -165,7 +165,7 @@ const App = () => {
           CommonUtils.camelizeWords(availableCocktails[j].cocktailName) === CommonUtils.camelizeWords(cocktail.cocktailName)
         ) {
           allIngredientsAvailable = false;
-          continue;
+          break;
         }
       }
 
