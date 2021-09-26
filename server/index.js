@@ -33,10 +33,8 @@ app.post('/makeDrink', (req, res) => {
     console.log('Fire: ', foundPins[i].ingredientName, pourTime(foundPins[i].amountInmL));
     setTimeout(() => turnOffChannel(foundPins[i].ingredientName), pourTime(foundPins[i].amountInmL));
   }
-  // Possibly have this send timeframe immediately,
-  // so front-end can do something while waiting
-  // setTimeout(() => res.send('Your drink is ready!'), timeframe + 100);
-  // res.status(200).send('Your drink is ready!');
+
+  // Sends the amount of time, to be handled on the front-end by the progress bar
   res.status(200).send({ timeframe });
 
 }, (error, response, body) => {

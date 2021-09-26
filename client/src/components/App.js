@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Channel from './Channel';
 import CocktailName from './CocktailName';
 import MixerListModal from './MixerListModal';
+import ProgressBar from './ProgressBar';
 
 import CommonUtils from '../../utils/CommonUtils';
 
@@ -259,12 +260,12 @@ const App = () => {
         />
       )}
 
-      <p>{dataResponse > 0 && (
+      <div>{dataResponse > 0 && (
         <React.Fragment>
-          <p>You have {dataResponse / 1000} seconds:</p>
-          {/* <p>{setTimeout('TIME!', dataResponse)}</p> */}
+          <p>You have {dataResponse / 1000} seconds</p>
+          <ProgressBar time={dataResponse / 1000} />
         </React.Fragment>
-      )}</p>
+      )}</div>
     </div>
   )
 };
