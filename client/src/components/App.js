@@ -160,6 +160,15 @@ const App = () => {
         }
       }
 
+      for (let j = 0; j < availableCocktails.length; j++) {
+        if (
+          CommonUtils.camelizeWords(availableCocktails[j].cocktailName) === CommonUtils.camelizeWords(cocktail.cocktailName)
+        ) {
+          allIngredientsAvailable = false;
+          continue;
+        }
+      }
+
       if (allIngredientsAvailable) availableCocktails = [...availableCocktails, cocktail];
 
       //If all ingredients are cycled through, and they are all on the list of available mixers, 
