@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import Channel from './Channel';
 import CocktailName from './CocktailName';
+import DoneButton from './DoneButton';
 import MixerListModal from './MixerListModal';
 import ProgressBar from './ProgressBar';
 
@@ -165,6 +166,13 @@ const App = () => {
     });
   };
 
+  const doneButton = () => setBartenderState(
+    state => ({
+      ...state,
+      dataResponse: 0
+    })
+  );
+
   const hideModal = () => setBartenderState(
     state => ({
       ...state,
@@ -172,7 +180,6 @@ const App = () => {
       shouldDisplayModal: false
     })
   );
-
 
   const updateChannel = (channelIdNumber, mixerName) => {
     let {
@@ -256,6 +263,7 @@ const App = () => {
         <React.Fragment>
           <p>You have {dataResponse / 1000} seconds</p>
           <ProgressBar time={dataResponse / 1000} />
+          <DoneButton doneButton={doneButton} time={dataResponse} />
         </React.Fragment>
       )}</div>
     </div>
