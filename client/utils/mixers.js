@@ -41,4 +41,9 @@ const mixers = [
   }
 ];
 
+/*
+ * mixerCategory will eventually be used as a way to cover multiple ingredients
+ * EX: Smirnoff or Stoli vodka, Pepsi or Coca Cola, etc.
+ */
+
 export default mixers;
