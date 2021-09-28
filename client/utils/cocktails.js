@@ -1,8 +1,15 @@
 const cocktails = [
   {
-    cocktailName: 'Vodka Cranberry',
     cocktailDescription: 'description goes here',
+    cocktailName: 'Vodka Cranberry',
     cocktailImage: 'img url to go here',
+    garnishIngredients: [
+      {
+        garnishName: 'ex: Orange wedge',
+        garnishIcon: 'garnish icon will go here'
+      }
+    ],
+    glassType: 'type of glass goes here',
     ingredients: [
       {
         ingredientName: 'vodka',
@@ -15,9 +22,16 @@ const cocktails = [
     ]
   },
   {
-    cocktailName: 'Tequila Sunrise',
     cocktailDescription: 'description goes here',
+    cocktailName: 'Tequila Sunrise',
     cocktailImage: 'img url to go here',
+    garnishIngredients: [
+      {
+        garnishName: 'ex: Orange wedge',
+        garnishIcon: 'garnish icon will go here'
+      }
+    ],
+    glassType: 'type of glass goes here',
     ingredients: [
       {
         ingredientName: 'tequila',
@@ -30,9 +44,16 @@ const cocktails = [
     ]
   },
   {
-    cocktailName: 'Gin and Tonic',
     cocktailDescription: 'description goes here',
+    cocktailName: 'Gin and Tonic',
     cocktailImage: 'img url to go here',
+    garnishIngredients: [
+      {
+        garnishName: 'ex: Orange wedge',
+        garnishIcon: 'garnish icon will go here'
+      }
+    ],
+    glassType: 'type of glass goes here',
     ingredients: [
       {
         ingredientName: 'gin',
@@ -45,9 +66,16 @@ const cocktails = [
     ]
   },
   {
-    cocktailName: 'Rum and Coke',
     cocktailDescription: 'description goes here',
+    cocktailName: 'Rum and Coke',
     cocktailImage: 'img url to go here',
+    garnishIngredients: [
+      {
+        garnishName: 'ex: Orange wedge',
+        garnishIcon: 'garnish icon will go here'
+      }
+    ],
+    glassType: 'type of glass goes here',
     ingredients: [
       {
         ingredientName: 'rum',
@@ -60,9 +88,16 @@ const cocktails = [
     ]
   },
   {
-    cocktailName: 'Long Island',
     cocktailDescription: 'description goes here',
+    cocktailName: 'Long Island',
     cocktailImage: 'img url to go here',
+    garnishIngredients: [
+      {
+        garnishName: 'ex: Orange wedge',
+        garnishIcon: 'garnish icon will go here'
+      }
+    ],
+    glassType: 'type of glass goes here',
     ingredients: [
       {
         ingredientName: 'gin',
