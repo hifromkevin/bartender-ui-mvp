@@ -237,7 +237,7 @@ const App = () => {
           ))
         }
       </div>
-      <h1>Select a Drink</h1>
+      {availableCocktails.length > 0 && <h1>Select a Cocktail</h1>}
       {availableCocktails && availableCocktails
         .map((cocktail, index) => (
           <CocktailName
