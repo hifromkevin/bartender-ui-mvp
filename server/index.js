@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const port = 3005;
+const Gpio = require('onoff').Gpio;
 
 app.use(bodyParser.json());
 
@@ -22,17 +23,17 @@ app.post('/makeDrink', (req, res) => {
 
   // This will eventually stop the GPIO pin from running
   // For now, this is simulated in the console
-  const turnOffChannel = (pin) => {
+  const turnOffChannel = (ingredient, pin) => {
     // new Gpio(pin, 'out').unexport();
-    console.log('Turning Off: ', pin);
-  }
+    console.log('Turning Off: ', ingredient);
+  };
 
   for (let i = 0; i < foundPins.length; i++) {
-    // new Gpio(foundPins[i].ingredientName, 'out');
+    // new Gpio(foundPins[i].gpioPin, 'out');
     timeframe = Math.max(timeframe, pourTime(foundPins[i].amountInmL));
     console.log('Fire: ', foundPins[i].ingredientName, pourTime(foundPins[i].amountInmL));
-    setTimeout(() => turnOffChannel(foundPins[i].ingredientName), pourTime(foundPins[i].amountInmL));
-  }
+    setTimeout(() => turnOffChannel(foundPins[i].ingredientName, foundPins[i].gpioPin), pourTime(foundPins[i].amountInmL));
+  };
 
   // Sends the amount of time, to be handled on the front-end by the progress bar
   res.status(200).send({ timeframe });

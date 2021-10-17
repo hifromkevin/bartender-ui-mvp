@@ -133,9 +133,9 @@ const App = () => {
     const sendTrueIfMixerIsNotIncluded = (ingredient) => {
       for (let i = 0; i < selectedMixers.length; i++) {
         if (selectedMixers[i].mixerName === ingredient) return false;
-      }
+      };
       return true;
-    }
+    };
 
     // Cycle through all of the available cocktails
     cocktails.forEach(cocktail => {
@@ -150,8 +150,8 @@ const App = () => {
         if (sendTrueIfMixerIsNotIncluded(ingredientName) && ingredientName !== newestMixer) {
           allIngredientsAvailable = false;
           break;
-        }
-      }
+        };
+      };
 
       if (allIngredientsAvailable) listOfCocktails = [...listOfCocktails, cocktail];
 
@@ -242,6 +242,7 @@ const App = () => {
         .map((cocktail, index) => (
           <CocktailName
             key={index}
+            channels={channels}
             cocktailName={cocktail.cocktailName}
             listOfIngredients={cocktail.ingredients}
             makeDrinkAPI={apiCall}
